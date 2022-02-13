@@ -1,5 +1,6 @@
 import 'package:fitness_app/home/home_screen.dart';
 import 'package:fitness_app/onboard/content_screen.dart';
+import 'package:fitness_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class Onbording extends StatefulWidget {
@@ -49,7 +50,7 @@ class _OnbordingState extends State<Onbording> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (_) => const HomeScreen(),
+                        builder: (_) => const WelcomeScreen(),
                       ),
                     );
                   },
@@ -121,7 +122,7 @@ class _OnbordingState extends State<Onbording> {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => const HomeScreen(),
+                          builder: (_) => const WelcomeScreen(),
                         ),
                       );
                     }

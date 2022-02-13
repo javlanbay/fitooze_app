@@ -1,4 +1,5 @@
 import 'package:fitness_app/home/home_screen.dart';
+import 'package:fitness_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -10,8 +11,8 @@ class AppRouter {
         return HomeScreen.route();
       case HomeScreen.routeName:
         return HomeScreen.route();
-      // case UsersScreen.routeName:
-      //   return UsersScreen.route(user: settings.arguments as User);
+      case WelcomeScreen.routeName:
+        return WelcomeScreen.route();
       // case OnboardingScreen.routeName:
       //   return OnboardingScreen.route();
       // case MatchesScreen.routeName:
