@@ -1,9 +1,12 @@
-import 'package:fitness_app/home/home_screen.dart';
+// ignore_for_file: deprecated_member_use
+
 import 'package:fitness_app/onboard/content_screen.dart';
 import 'package:fitness_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 class Onbording extends StatefulWidget {
+  const Onbording({Key? key}) : super(key: key);
+
   @override
   _OnbordingState createState() => _OnbordingState();
 }
@@ -64,13 +67,11 @@ class _OnbordingState extends State<Onbording> {
               ),
               const Spacer(),
               const Spacer(),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    contents.length,
-                    (index) => buildDot(index, context),
-                  ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  contents.length,
+                  (index) => buildDot(index, context),
                 ),
               ),
               Expanded(

@@ -1,4 +1,6 @@
 import 'package:fitness_app/home/home_screen.dart';
+import 'package:fitness_app/screens/signin/signin_screen.dart';
+import 'package:fitness_app/screens/signup/signup_screen.dart';
 import 'package:fitness_app/screens/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -9,14 +11,15 @@ class AppRouter {
     switch (settings.name) {
       case '/':
         return HomeScreen.route();
+      // ignore: no_duplicate_case_values
       case HomeScreen.routeName:
         return HomeScreen.route();
       case WelcomeScreen.routeName:
         return WelcomeScreen.route();
-      // case OnboardingScreen.routeName:
-      //   return OnboardingScreen.route();
-      // case MatchesScreen.routeName:
-      //   return MatchesScreen.route();
+      case SignUpScreen.routeName:
+        return SignUpScreen.route();
+      case SignInScreen.routeName:
+        return SignInScreen.route();
       // case ProfileScreen.routeName:
       //   return ProfileScreen.route();
       // case ChatScreen.routeName:

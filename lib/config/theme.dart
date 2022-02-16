@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 ThemeData theme() {
   return ThemeData(
-    primaryColor: Color(0xFFA26FFD),
-    accentColor: Color(0xFF828282),
-    scaffoldBackgroundColor: Color(0xFF121212),
+    primaryColor: const Color(0xFFA26FFD),
+    accentColor: const Color(0xFF252525),
+    scaffoldBackgroundColor: const Color(0xFF121212),
     fontFamily: 'Manrope',
-    textTheme: TextTheme(
+    textTheme: const TextTheme(
       headline1: TextStyle(
         fontSize: 24,
         fontWeight: FontWeight.w600,

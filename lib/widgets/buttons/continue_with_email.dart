@@ -1,3 +1,6 @@
+// ignore_for_file: deprecated_member_use
+
+import 'package:fitness_app/screens/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class ContinueWithEmail extends StatelessWidget {
@@ -33,7 +36,14 @@ class ContinueWithEmail extends StatelessWidget {
             ),
           ],
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const SignUpScreen(),
+            ),
+          );
+        },
         color: Theme.of(context).primaryColor,
         textColor: Colors.white,
         shape: RoundedRectangleBorder(
