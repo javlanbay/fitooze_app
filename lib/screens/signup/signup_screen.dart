@@ -1,6 +1,10 @@
 // ignore_for_file: deprecated_member_use
-
 import 'package:fitness_app/screens/signin/signin_screen.dart';
+import 'package:fitness_app/widgets/buttons/sign_up_button.dart';
+import 'package:fitness_app/widgets/form/email_input.dart';
+import 'package:fitness_app/widgets/form/password_input.dart';
+import 'package:fitness_app/widgets/form/phone_input.dart';
+import 'package:fitness_app/widgets/form/text_field_input.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -63,26 +67,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     ),
                   ),
                   const TextFieldInput(
-                    icon: Icons.account_box,
-                    hint: "Your name",
                     inputType: TextInputType.name,
                     inputAction: TextInputAction.next,
                   ),
                   const EmailInput(
-                    icon: Icons.email,
-                    hint: "Email address",
                     inputType: TextInputType.emailAddress,
                     inputAction: TextInputAction.next,
                   ),
                   const PhoneInput(
-                    icon: Icons.phone,
-                    hint: "Phone number",
                     inputType: TextInputType.phone,
                     inputAction: TextInputAction.next,
                   ),
                   const PasswordInput(
-                    icon: Icons.lock,
-                    hint: "Password",
                     inputType: TextInputType.name,
                     inputAction: TextInputAction.done,
                     suffixIcon: Icons.visibility_off,
@@ -94,39 +90,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         .headline4
                         ?.copyWith(fontSize: 13, fontWeight: FontWeight.normal),
                   ),
-                  Container(
-                    height: 55,
-                    margin: const EdgeInsets.only(
-                      top: 20,
-                      left: 10,
-                      right: 10,
-                      bottom: 15,
-                    ),
-                    width: double.infinity,
-                    child: FlatButton(
-                      child: Center(
-                        child: Text(
-                          "Sign Up Now",
-                          style:
-                              Theme.of(context).textTheme.headline3!.copyWith(),
-                        ),
-                      ),
-                      onPressed: () {
-                        if (_formKey.currentState!.validate()) {
-                          print("successful");
-
-                          return;
-                        } else {
-                          print("UnSuccessfull");
-                        }
-                      },
-                      color: Theme.of(context).primaryColor,
-                      textColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                    ),
-                  ),
+                  SignUpButton(formKey: _formKey),
                   const SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -163,276 +127,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
               ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-}
-
-class PasswordInput extends StatefulWidget {
-  const PasswordInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputType,
-    required this.inputAction,
-    required this.suffixIcon,
-  }) : super(key: key);
-
-  final IconData icon;
-  final IconData suffixIcon;
-  final String hint;
-  final TextInputType inputType;
-  final TextInputAction inputAction;
-
-  @override
-  State<PasswordInput> createState() => _PasswordInputState();
-}
-
-class _PasswordInputState extends State<PasswordInput> {
-  final TextEditingController _password = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
-      child: Center(
-        child: TextFormField(
-          controller: _password,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFF333333),
-            prefixIcon: Icon(
-              widget.icon,
-              color: Colors.white,
-            ),
-            suffixIcon: Icon(
-              widget.suffixIcon,
-              color: Colors.white,
-            ),
-            hintText: widget.hint,
-            hintStyle: Theme.of(context).textTheme.headline4!.copyWith(
-                  color: const Color(0xFF828282),
-                  fontWeight: FontWeight.w400,
-                ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                width: 0,
-                style: BorderStyle.none,
-              ),
-            ),
-          ),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return 'Please a Enter Password';
-            }
-            return null;
-          },
-          obscureText: true,
-          style: const TextStyle(color: Color(0xFF828282)),
-          keyboardType: widget.inputType,
-          textInputAction: widget.inputAction,
-        ),
-      ),
-    );
-  }
-}
-
-class PhoneInput extends StatefulWidget {
-  const PhoneInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputType,
-    required this.inputAction,
-  }) : super(key: key);
-
-  final IconData icon;
-  final String hint;
-  final TextInputType inputType;
-  final TextInputAction inputAction;
-
-  @override
-  State<PhoneInput> createState() => _PhoneInputState();
-}
-
-class _PhoneInputState extends State<PhoneInput> {
-  final TextEditingController _phone = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
-      child: Center(
-        child: TextFormField(
-          controller: _phone,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFF333333),
-            prefixIcon: Icon(
-              widget.icon,
-              color: Colors.white,
-            ),
-            hintText: widget.hint,
-            hintStyle: Theme.of(context).textTheme.headline4!.copyWith(
-                  color: const Color(0xFF828282),
-                  fontWeight: FontWeight.w400,
-                ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                width: 0,
-                style: BorderStyle.none,
-              ),
-            ),
-          ),
-          maxLength: 9,
-          validator: (value) {
-            if (value!.isEmpty) {
-              return 'Please enter phone number';
-            }
-            if (value.length < 9) {
-              return "Please enter valid phone";
-            }
-            return null;
-          },
-          onSaved: (value) {},
-          style: const TextStyle(color: Color(0xFF828282)),
-          keyboardType: widget.inputType,
-          textInputAction: widget.inputAction,
-        ),
-      ),
-    );
-  }
-}
-
-class EmailInput extends StatefulWidget {
-  const EmailInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputType,
-    required this.inputAction,
-  }) : super(key: key);
-
-  final IconData icon;
-  final String hint;
-  final TextInputType inputType;
-  final TextInputAction inputAction;
-
-  @override
-  State<EmailInput> createState() => _EmailInputState();
-}
-
-class _EmailInputState extends State<EmailInput> {
-  final TextEditingController _email = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
-      child: Center(
-        child: TextFormField(
-          controller: _email,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFF333333),
-            prefixIcon: Icon(
-              widget.icon,
-              color: Colors.white,
-            ),
-            hintText: widget.hint,
-            hintStyle: Theme.of(context).textTheme.headline4!.copyWith(
-                  color: const Color(0xFF828282),
-                  fontWeight: FontWeight.w400,
-                ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                width: 0,
-                style: BorderStyle.none,
-              ),
-            ),
-          ),
-          validator: (value) {
-            if (value!.isEmpty) {
-              return 'Please enter email';
-            }
-            if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
-                .hasMatch(value)) {
-              return 'Please a valid Email';
-            }
-            return null;
-          },
-          onSaved: (value) {},
-          style: const TextStyle(color: Color(0xFF828282)),
-          keyboardType: widget.inputType,
-          textInputAction: widget.inputAction,
-        ),
-      ),
-    );
-  }
-}
-
-class TextFieldInput extends StatefulWidget {
-  const TextFieldInput({
-    Key? key,
-    required this.icon,
-    required this.hint,
-    required this.inputType,
-    required this.inputAction,
-  }) : super(key: key);
-
-  final IconData icon;
-  final String hint;
-  final TextInputType inputType;
-  final TextInputAction inputAction;
-
-  @override
-  State<TextFieldInput> createState() => _TextFieldInputState();
-}
-
-class _TextFieldInputState extends State<TextFieldInput> {
-  final TextEditingController _name = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
-      child: Center(
-        child: TextFormField(
-          controller: _name,
-          decoration: InputDecoration(
-            filled: true,
-            fillColor: const Color(0xFF333333),
-            prefixIcon: Icon(
-              widget.icon,
-              color: Colors.white,
-            ),
-            hintText: widget.hint,
-            hintStyle: Theme.of(context).textTheme.headline4!.copyWith(
-                  color: const Color(0xFF828282),
-                  fontWeight: FontWeight.w400,
-                ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(15.0),
-              borderSide: const BorderSide(
-                width: 0,
-                style: BorderStyle.none,
-              ),
-            ),
-          ),
-          onSaved: (name) {},
-          validator: (value) {
-            if (value!.isEmpty) {
-              return "Please enter name";
-            }
-            return null;
-          },
-          style: const TextStyle(color: Color(0xFF828282)),
-          keyboardType: widget.inputType,
-          textInputAction: widget.inputAction,
         ),
       ),
     );

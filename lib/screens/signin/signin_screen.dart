@@ -1,6 +1,8 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:fitness_app/screens/signup/signup_screen.dart';
+import 'package:fitness_app/widgets/form/password_input.dart';
+import 'package:fitness_app/widgets/form/text_field_input.dart';
 import 'package:flutter/material.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -70,14 +72,10 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                 ),
                 const TextFieldInput(
-                  icon: Icons.account_box,
-                  hint: "Your name",
                   inputType: TextInputType.name,
                   inputAction: TextInputAction.next,
                 ),
                 const PasswordInput(
-                  icon: Icons.lock,
-                  hint: "Password",
                   inputType: TextInputType.name,
                   inputAction: TextInputAction.done,
                   suffixIcon: Icons.visibility_off,
