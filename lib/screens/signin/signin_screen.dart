@@ -144,7 +144,11 @@ class _SignInScreenState extends State<SignInScreen> {
                 Container(
                   height: 55,
                   margin: const EdgeInsets.only(
-                      top: 17, left: 10, right: 10, bottom: 30),
+                    top: 17,
+                    left: 10,
+                    right: 10,
+                    bottom: 30,
+                  ),
                   width: double.infinity,
                   child: FlatButton(
                     child: Row(

@@ -1,8 +1,8 @@
 import 'package:fitness_app/config/textform/decoration.dart';
 import 'package:flutter/material.dart';
 
-class PhoneInput extends StatefulWidget {
-  const PhoneInput({
+class SurnameInput extends StatefulWidget {
+  const SurnameInput({
     Key? key,
     required this.inputType,
     required this.inputAction,
@@ -12,11 +12,11 @@ class PhoneInput extends StatefulWidget {
   final TextInputAction inputAction;
 
   @override
-  State<PhoneInput> createState() => _PhoneInputState();
+  State<SurnameInput> createState() => _SurnameInputState();
 }
 
-class _PhoneInputState extends State<PhoneInput> {
-  final TextEditingController _phone = TextEditingController();
+class _SurnameInputState extends State<SurnameInput> {
+  final TextEditingController _surname = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,16 +24,14 @@ class _PhoneInputState extends State<PhoneInput> {
       padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 10.0),
       child: Center(
         child: TextFormField(
-          controller: _phone,
-          decoration: buildInputDecoration(Icons.phone, "Phone number"),
-          maxLength: 9,
+          controller: _surname,
+          decoration:
+              buildInputDecoration(Icons.account_box_rounded, "Surname"),
           validator: (value) {
             if (value!.isEmpty) {
-              return 'Please enter phone number';
+              return 'Please enter your surname';
             }
-            if (value.length < 9) {
-              return "Please enter valid phone";
-            }
+
             return null;
           },
           onSaved: (value) {},

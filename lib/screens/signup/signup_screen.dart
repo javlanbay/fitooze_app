@@ -1,9 +1,12 @@
 // ignore_for_file: deprecated_member_use
+import 'dart:convert';
+
+import 'package:fitness_app/api/api.dart';
 import 'package:fitness_app/screens/signin/signin_screen.dart';
 import 'package:fitness_app/widgets/buttons/sign_up_button.dart';
 import 'package:fitness_app/widgets/form/email_input.dart';
 import 'package:fitness_app/widgets/form/password_input.dart';
-import 'package:fitness_app/widgets/form/phone_input.dart';
+import 'package:fitness_app/widgets/form/surname_input.dart';
 import 'package:fitness_app/widgets/form/text_field_input.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +28,6 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -70,12 +72,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     inputType: TextInputType.name,
                     inputAction: TextInputAction.next,
                   ),
-                  const EmailInput(
-                    inputType: TextInputType.emailAddress,
+                  const SurnameInput(
+                    inputType: TextInputType.name,
                     inputAction: TextInputAction.next,
                   ),
-                  const PhoneInput(
-                    inputType: TextInputType.phone,
+                  const EmailInput(
+                    inputType: TextInputType.emailAddress,
                     inputAction: TextInputAction.next,
                   ),
                   const PasswordInput(
